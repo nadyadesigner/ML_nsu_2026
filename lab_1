@@ -1,1 +1,80 @@
+# Import necessary libraries
+import pandas as pd
+from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# Load the breast cancer dataset
+data = load_breast_cancer()
+df = pd.DataFrame(data.data, columns=data.feature_names)
+df['target'] = data.target
+
+# Display the first few rows of the dataset
+print("head: ", df.head())
+print("shape: ", df.shape)
+print("Dataset shape: ", df.shape)
+print("Column names: ", df.columns)
+df.info()
+print(df.isnull().sum())
+print("unique target: ", df['target'].unique())
+print("value counts: ", df['target'].value_counts())
+X = df.drop('target', axis=1)
+y = df['target']
+
+print("X shape:", X.shape)
+print("y shape:", y.shape)
+
+
+# TODO:
+# 1. How many features (colums), what are the name of columns in this dataset?
+# 2. Data types of columns
+# 3. Is there any missing values?
+# 4. What are the unique values of target column?
+
+print('Step 2: Data Preprocessing')
+# Separate features and target variable
+X = df.drop(columns='target')
+y = df['target']
+# Standardize the features to similar ranges
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+# TODO:
+# Print first item of X and X_scaled to compare the values
+print("Original values:")
+print(X.iloc[0])
+
+print("Scaled values:")
+print(X_scaled[0])
+
+print('Step 3: Split the Data into Training and Testing Sets')
+#X_train, X_test, y_train, y_test = train_test_split(
+#    X_scaled, y, test_size=0.3, random_state=42
+#)
+result = train_test_split(
+    X_scaled,
+    y,
+    test_size=0.3,
+    random_state=42
+)
+
+X_train = result[0]
+X_test = result[1]
+y_train = result[2]
+y_test = result[3]
+
+print("X_train:", X_train.shape)
+print("X_test:", X_test.shape)
+print("y_train:", y_train.shape)
+print("y_test:", y_test.shape)
+
+
+
+
+
+
+
+
+
 
