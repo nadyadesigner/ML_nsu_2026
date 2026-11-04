@@ -1,0 +1,134 @@
+Windows PowerShell
+(C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены.
+
+Попробуйте новую кроссплатформенную оболочку PowerShell (https://aka.ms/pscore6)
+
+PS C:\ML_2026> python -c "import sys; print(sys.executable)"
+C:\ML_2026\Scripts\python.exe
+PS C:\ML_2026> python -c "import sys; print(sys.prefix != sys.base_prefix)"
+True
+PS C:\ML_2026> python -m pip --version
+pip 21.1.2 from C:\ML_2026\lib\site-packages\pip (python 3.9)
+PS C:\ML_2026> python -c "import sys; print(sys.executable)"
+C:\ML_2026\Scripts\python.exe
+PS C:\ML_2026> Test-Path .venv\Scripts\python.exe
+False
+PS C:\ML_2026> py -3.9 -m venv .venv
+PS C:\ML_2026> Test-Path .venv\Scripts\python.exe
+True
+PS C:\ML_2026> .\.venv\Scripts\python.exe -c "import sys; print(sys.executable)"
+C:\ML_2026\.venv\Scripts\python.exe
+PS C:\ML_2026> .\.venv\Scripts\python.exe -c "import sys; print(sys.prefix != sys.base_prefix)"
+True
+PS C:\ML_2026> .\.venv\Scripts\Activate.ps1
+(.venv) PS C:\ML_2026> python -m pip install pandas
+Collecting pandas
+  Using cached pandas-2.3.3-cp39-cp39-win_amd64.whl (11.4 MB)
+Collecting python-dateutil>=2.8.2
+  Using cached python_dateutil-3.0.0-py2.py3-none-any.whl (94 kB)
+Collecting tzdata>=2022.7
+  Using cached tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Collecting pytz>=2020.1
+  Using cached pytz-2026.6-py2.py3-none-any.whl (506 kB)
+Collecting numpy>=1.22.4
+  Using cached numpy-2.0.2-cp39-cp39-win_amd64.whl (15.9 MB)
+Collecting six>=1.6
+  Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: tzdata, six, pytz, python-dateutil, numpy, pandas
+Successfully installed numpy-2.0.2 pandas-2.3.3 python-dateutil-3.0.0 pytz-2026.6 six-1.17.0 tzdata-2026.6
+WARNING: You are using pip version 21.2.3; however, version 26.0.1 is available.
+You should consider upgrading via the 'C:\ML_2026\.venv\Scripts\python.exe -m pip install --upgrade pip' command.
+(.venv) PS C:\ML_2026> python -m pip show pandas
+Name: pandas
+Version: 2.3.3
+Summary: Powerful data structures for data analysis, time series, and statistics
+Home-page:
+Author:
+Author-email: The Pandas Development Team <pandas-dev@python.org>
+License: BSD 3-Clause License
+
+         Copyright (c) 2008-2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team
+         All rights reserved.
+
+         Copyright (c) 2011-2023, Open source contributors.
+
+         Redistribution and use in source and binary forms, with or without
+         modification, are permitted provided that the following conditions are met:
+
+         * Redistributions of source code must retain the above copyright notice, this
+           list of conditions and the following disclaimer.
+
+         * Redistributions in binary form must reproduce the above copyright notice,
+           this list of conditions and the following disclaimer in the documentation
+           and/or other materials provided with the distribution.
+
+         * Neither the name of the copyright holder nor the names of its
+           contributors may be used to endorse or promote products derived from
+           this software without specific prior written permission.
+
+         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+         AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+         IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+         DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+         FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+         DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+         SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+         CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+         OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+         OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Location: c:\ml_2026\.venv\lib\site-packages
+Requires: numpy, tzdata, python-dateutil, pytz
+Required-by:
+(.venv) PS C:\ML_2026> python -c "import pandas as pd; print(pd.__version__)"
+2.3.3
+(.venv) PS C:\ML_2026> import pandas as pd
+import : Имя "import" не распознано как имя командлета, функции, файла сценария или выполняемой программы. Проверьте 
+правильность написания имени, а также наличие и правильность пути, после чего повторите попытку.
+строка:1 знак:1
++ import pandas as pd
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (import:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+(.venv) PS C:\ML_2026> import sklearn
+import : Имя "import" не распознано как имя командлета, функции, файла сценария или выполняемой программы. Проверьте 
+правильность написания имени, а также наличие и правильность пути, после чего повторите попытку.
+строка:1 знак:1
++ import sklearn
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (import:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+(.venv) PS C:\ML_2026>
+(.venv) PS C:\ML_2026> print(pd.__version__)
+pd.__version__ : Имя "pd.__version__" не распознано как имя командлета, функции, файла сценария или выполняемой программы. 
+Проверьте правильность написания имени, а также наличие и правильность пути, после чего повторите попытку.
+строка:1 знак:7
++ print(pd.__version__)
++       ~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (pd.__version__:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+(.venv) PS C:\ML_2026>       
+(.venv) PS C:\ML_2026>
+(.venv) PS C:\ML_2026> python -m pip install scikit-learn
+Collecting scikit-learn
+  Downloading scikit_learn-1.6.1-cp39-cp39-win_amd64.whl (11.2 MB)
+     |████████████████████████████████| 11.2 MB 726 kB/s
+Collecting joblib>=1.2.0
+  Downloading joblib-1.5.3-py3-none-any.whl (309 kB)
+     |████████████████████████████████| 309 kB 656 kB/s
+Collecting threadpoolctl>=3.1.0
+  Downloading threadpoolctl-3.7.0-py3-none-any.whl (26 kB)
+Requirement already satisfied: numpy>=1.19.5 in c:\ml_2026\.venv\lib\site-packages (from scikit-learn) (2.0.2)
+Collecting scipy>=1.6.0
+  Downloading scipy-1.13.1-cp39-cp39-win_amd64.whl (46.2 MB)
+     |████████████████████████████████| 46.2 MB 41 kB/s
+Installing collected packages: threadpoolctl, scipy, joblib, scikit-learn
+Successfully installed joblib-1.5.3 scikit-learn-1.6.1 scipy-1.13.1 threadpoolctl-3.7.0
+WARNING: You are using pip version 21.2.3; however, version 26.0.1 is available.
+You should consider upgrading via the 'C:\ML_2026\.venv\Scripts\python.exe -m pip install --upgrade pip' command.
+(.venv) PS C:\ML_2026> python -c "import pandas as pd; print(pd.__version__)"
+2.3.3
+(.venv) PS C:\ML_2026>
