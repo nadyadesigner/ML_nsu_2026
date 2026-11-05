@@ -1,0 +1,21 @@
+import numpy as np
+import pandas as pd
+from ucimlrepo import fetch_ucirepo
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set(style="whitegrid")
+
+X = np.array([[1], [2], [3], [4], [5]])
+y = np.array([1, 2, 1.3, 3.75, 2.25])
+print("X:", X)
+print("y:", y)
+
+class SimpleLinearRegression:
+    pass
+    # TODO: Implement fit and predict methods
+
+# TODO: Predicting using SimpleLinearRegression
+# TODO: Visualizing the results (scatter plot and regression line)
+
+
+
