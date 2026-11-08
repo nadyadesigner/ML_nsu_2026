@@ -3,19 +3,135 @@ import pandas as pd
 from ucimlrepo import fetch_ucirepo
 import matplotlib.pyplot as plt
 import seaborn as sns
-sns.set(style="whitegrid")
+sns.set(style="darkgrid")
 
 X = np.array([[1], [2], [3], [4], [5]])
 y = np.array([1, 2, 1.3, 3.75, 2.25])
 print("X:", X)
 print("y:", y)
+mean_X = np.mean(X)
+print(X-mean_X)
+
+#print('mean: ', mean_X, mean_y)
 
 class SimpleLinearRegression:
-    pass
-    # TODO: Implement fit and predict methods
+    def fit(self, X, y):
+        X = X.flatten()
+        mean_X = np.mean(X)
+        mean_y = np.mean(y)
+        X_i = X - mean_X
+        y_i = y - mean_y
+        b_1 = np.sum(X_i*y_i)/np.sum((X_i)**2)
+        b_0 = mean_y - b_1 * mean_X
+        self.b_0 = b_0
+        self.b_1 = b_1
+    def predict(self, X):
+        X = X.flatten()
+        predictions = self.b_0 + self.b_1 * X
+        print('b_0: ', self.b_0)
+        print('b_1: ', self.b_1)
+        return predictions
 
+
+model = SimpleLinearRegression()
+model.fit(X, y)
+predictions = model.predict(X)
+print(predictions)
+
+plt.figure()
+plt.scatter(X,y)
+plt.scatter(X, predictions)
+plt.plot(X, predictions)
+plt.xlabel("X")
+plt.ylabel("y")
+plt.title("Simple Linear Regression")
+plt.legend(["Regression line", "Actual values"])
+plt.show()
+
+
+# TODO: Implement fit and predict methods
 # TODO: Predicting using SimpleLinearRegression
 # TODO: Visualizing the results (scatter plot and regression line)
+
+_____________________________________________________________________
+
+
+import numpy as np
+import pandas as pd
+from ucimlrepo import fetch_ucirepo
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set(style="darkgrid")
+
+X = np.array(
+    [
+        [1,1,1],
+        [1,1,2],
+        [1,2,2],
+        [1,0,1]
+    ]
+)
+
+y = np.array([
+    3.25,
+    6.5,
+    3.5,
+    5.0
+])
+
+#print('X: ', X, sep='\n')
+#print('y: ', y)
+#print('X mean: ', X_mean)
+#print('y mean: ', y_mean)
+#print('X_features', X_features)
+#print('y_centered', y_centered)
+#print('for b : ', for_b, sep='\n')
+#print('b: ', b, sep='\n')
+#print("b_0: ", b_0)
+
+class MultipleLinearRegression:
+    def fit(self, X, y):
+        y_mean = np.mean(y)
+        self.X_mean = np.mean(X, axis=0)
+        X_centered = X - self.X_mean
+        X_features = X_centered[:, 1:]
+        y_centered = y - y_mean
+        for_b = np.linalg.inv((X_features.T @ X_features)) @ X_features.T
+        self.b = for_b @ y_centered
+        self.b_0 = y_mean - self.b @ self.X_mean[1:]
+
+    def predict(self, X):
+        predictions = self.b_0 + X[:,1:] @ self.b
+        print('b_0', self.b_0)
+        print('b', self.b)
+        return predictions
+
+model = MultipleLinearRegression()
+model.fit(X, y)
+predictions = model.predict(X)
+print(predictions)
+
+plt.figure()
+plt.scatter(y, predictions)
+plt.xlabel('Actual Y')
+plt.ylabel('Predicted Y')
+plt.title('Actual vs Predicted')
+plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--')
+plt.show()
+
+
+# TODO: Implement fit and predict methods
+# TODO: Predicting using MultipleLinearRegression
+# TODO: VIsualizing the results (scatter plot and regression line)
+
+
+______________________________________________________________________________________
+
+
+
+
+
+
 
 
 
