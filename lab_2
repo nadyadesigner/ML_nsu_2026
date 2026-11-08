@@ -128,7 +128,54 @@ plt.show()
 ______________________________________________________________________________________
 
 
+import numpy as np
+import pandas as pd
+from ucimlrepo import fetch_ucirepo
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set(style="whitegrid")
 
+# TODO: Implement gradient descent algorithm
+def func(x):
+    return x**2 - 4*x + 1
+
+def grad_func(x):
+    return 2*x - 4
+lr = 0.1
+
+def gradient_descent(starting_point, gradient_func, learning_rate, max_iter, tolerance):
+    history = []
+    x = starting_point
+    for i in range(max_iter):
+        gradient = gradient_func(x)
+        x_new = x - learning_rate * gradient
+        history.append(x_new)
+        x = x_new
+        if abs(gradient) < tolerance:
+            break
+    return history, x
+
+history, result = gradient_descent(
+    starting_point=0.0,
+    gradient_func=grad_func,
+    learning_rate=lr,
+    max_iter=20,
+    tolerance=1e-6
+)
+print("Optimized result:", result)
+
+history_array = np.array(history)
+x_vals = np.linspace(-1, 5, 100)
+y_vals = func(x_vals)
+
+plt.plot(x_vals, y_vals, label='Function')
+plt.scatter(history_array, func(history_array), color='red', label='Gradient Descent Steps')
+plt.legend()
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.title(f'n_iter={len(history)}, lr={lr}, results={result:.4f}')
+
+plt.show()
 
 
 
