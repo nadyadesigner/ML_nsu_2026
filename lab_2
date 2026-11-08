@@ -111,6 +111,14 @@ model.fit(X, y)
 predictions = model.predict(X)
 print(predictions)
 
+e_residuals = y - predictions
+print('error', e_residuals)
+MSE = np.sum(e_residuals**2)/len(e_residuals)
+print('MSE: ', MSE)
+RMSE = np.sqrt(MSE)
+print('RMSE: ', RMSE)
+
+
 plt.figure()
 plt.scatter(y, predictions)
 plt.xlabel('Actual Y')
@@ -123,6 +131,9 @@ plt.show()
 # TODO: Implement fit and predict methods
 # TODO: Predicting using MultipleLinearRegression
 # TODO: VIsualizing the results (scatter plot and regression line)
+
+
+
 
 
 ______________________________________________________________________________________
