@@ -188,6 +188,64 @@ plt.title(f'n_iter={len(history)}, lr={lr}, results={result:.4f}')
 
 plt.show()
 
+_____________________________________________________________________________________
+
+
+import numpy as np
+import pandas as pd
+from ucimlrepo import fetch_ucirepo
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set(style="darkgrid")
+
+from ucimlrepo import fetch_ucirepo
+# fetch dataset
+auto_mpg = fetch_ucirepo(id=9)
+
+# data (as pandas dataframes)
+X = auto_mpg.data.features
+y = auto_mpg.data.targets
+auto_mpg.metadata
+
+print(auto_mpg.metadata)
+print('head:', X.head())
+print(y.head())
+
+print(X.shape)
+print(y.shape)
+
+print('y description: ')
+print(y.describe())
+
+print(X.shape)
+print(X.isnull().sum())
+print(X['horsepower'].isnull().sum())
+X['horsepower'] = X['horsepower'].fillna(X['horsepower'].mean())
+print(X.isnull().sum())
+
+print(X.info())
+X.info()
+print(X.dtypes)
+
+#print(X['horsepower'].unique())
+#X['horsepower'] = pd.to_numeric(X['horsepower'])
+#print(X.dtypes)
+#print(X['horsepower'].dtype)
+#print(type(X['horsepower'].iloc[32]))
+#print(X['horsepower'].iloc[32])
+
+print(X.isnull().sum())
+print(y.isnull().sum())
+
+print('2.2. EDA')
+# Combine features and target into a single DataFrame for EDA
+df = pd.concat([X, y], axis=1)
+df.isna().sum()
+df.info()
+df.describe()
+df.sample(5)
+
+
 
 
 
